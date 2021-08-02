@@ -4,18 +4,27 @@
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     app:cardCornerRadius="4dp"
-    android:layout_marginBottom="5dp">
+    android:layout_marginBottom="5dp"
+    android:clickable="true"
+    android:id="@+id/cardview"
+
+
+    >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp">
+        android:layout_margin="4dp"
+        android:onClick="openItem"
+        >
+
 
         <ImageView
+            android:id="@+id/imageView"
             android:layout_width="50dp"
             android:layout_height="50dp"
-            android:padding="2dp"
-            android:id="@+id/imageView"/>
+            android:clickable="false"
+            android:padding="2dp" />
 
         <TextView
             android:id="@+id/textView"
@@ -26,7 +35,8 @@
             android:textStyle="bold"
             android:textColor="@android:color/black"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/imageView"/>
+            android:layout_toEndOf="@+id/imageView"
+            android:clickable="false"/>
 
         <TextView
             android:id="@id/textView2"
@@ -36,7 +46,8 @@
             android:textSize="15sp"
             android:layout_below="@id/textView"
             android:layout_toEndOf="@id/imageView"
-            android:layout_marginStart="8dp"/>
+            android:layout_marginStart="8dp"
+            android:clickable="false"/>
 
 
     </RelativeLayout>

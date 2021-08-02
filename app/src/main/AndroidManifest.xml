@@ -10,6 +10,16 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Fitness">
         <activity
+            android:name=".Uebung"
+            android:exported="true"
+            android:label="Übung"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".AddItem"
+            android:exported="true"
+            android:label="@string/title_activity_add_item"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
