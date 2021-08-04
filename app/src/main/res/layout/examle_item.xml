@@ -8,15 +8,13 @@
     android:clickable="true"
     android:id="@+id/cardview"
 
-
     >
 
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_margin="4dp"
-        android:onClick="openItem"
-        >
+        android:layout_margin="4dp">
+        <!--android:onClick="openItem"-->
 
 
         <ImageView

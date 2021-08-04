@@ -9,28 +9,38 @@ import android.widget.Toast;
 
 import androidx.annotation.Nullable;
 
-public class FitnessDB extends SQLiteOpenHelper {
+public class CustomDB extends SQLiteOpenHelper {
 
-    private Context context;
+    private final Context context;
     private static final String DATABASE_NAME = "Fitness.db";
     private static final int DATABASE_VERSION = 1;
 
-    private static final String TABLE_NAME = "Uebung";
-    private static final String COLUMN_ID = "fid";
-    private static final String COLUMN_NAME = "name";
+    private final String TABLE_NAME;
+    private static final String COLUMN_ID = "cid";
+    private static final String COLUMN_SAETZE = "saetze";
+    private static final String COLUMN_GEWICHT = "gewicht";
+    private static final String COLUMN_DATUM = "datum";
 
 
-    public FitnessDB(@Nullable Context context) {
+    public CustomDB(@Nullable Context context, String TABLE_NAME) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         this.context = context;
+        this.TABLE_NAME = TABLE_NAME;
     }
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         String query = "CREATE TABLE " + TABLE_NAME +
-                        " ("+COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                        COLUMN_NAME + " TEXT);";
+                " ("+COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
+                COLUMN_SAETZE + " DOUBLE, " +
+                COLUMN_GEWICHT + " DOUBLE, " +
+                COLUMN_DATUM + " DATE);";
         sqLiteDatabase.execSQL(query);
+
+        /*query = "CREATE TABLE FitnessDB2CustomDB (fid INTEGER, cid INTEGER," +
+                "PRIMARY KEY(fid, cid)," +
+                "CONSTRAINT " +
+                ");";*/
 
     }
 
@@ -47,7 +57,7 @@ public class FitnessDB extends SQLiteOpenHelper {
         System.out.println("\n\n\n\n"+db+"\n\n\n\n");
 
         if(!name.equals("")) {
-            cv.put(COLUMN_NAME, name);
+            cv.put(COLUMN_DATUM, name);
             long result = db.insert(TABLE_NAME, null, cv);
             if (result == -1) {
                 Toast.makeText(context, "ALARM!\nALARM!", Toast.LENGTH_LONG).show();
@@ -58,7 +68,7 @@ public class FitnessDB extends SQLiteOpenHelper {
             Toast.makeText(context, "Textfeld darf nicht Leer sein!", Toast.LENGTH_LONG).show();
         }
     }
-    
+
 
     Cursor readAllData(){
         String query = "SELECT * FROM " + TABLE_NAME;

@@ -28,10 +28,15 @@ public class AddItem extends AppCompatActivity {
             public void onClick(View view) {
                 FitnessDB myDB = new FitnessDB(AddItem.this);
                 myDB.addUebung(name_input.getText().toString().trim());
+                openMain();
             }
         });
 
 
 
+    }
+    public void openMain(){
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 }

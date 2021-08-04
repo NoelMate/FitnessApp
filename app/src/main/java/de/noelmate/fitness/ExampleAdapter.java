@@ -1,14 +1,17 @@
 package de.noelmate.fitness;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
@@ -37,6 +40,16 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         holder.mImageView.setImageResource(R.drawable.weight_icon);
         holder.mTextView2.setText(String.valueOf(uebung_id.get(position)));
         holder.mTextView1.setText(String.valueOf(uebung_name.get(position)));
+        int finalPosition = position;
+        holder.example_item.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, Uebung.class);
+                intent.putExtra("id", String.valueOf(uebung_id.get(finalPosition)));
+                intent.putExtra("name", String.valueOf(uebung_name.get(finalPosition)));
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -49,6 +62,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
         public ImageView mImageView;
         public TextView mTextView1;
         public TextView mTextView2;
+        CardView example_item;
 
         public ExampleViewHolder(View itemView)
         {
@@ -56,6 +70,7 @@ public class ExampleAdapter extends RecyclerView.Adapter<ExampleAdapter.ExampleV
             mImageView = itemView.findViewById(R.id.imageView);
             mTextView1 = itemView.findViewById(R.id.textView);
             mTextView2 = itemView.findViewById(R.id.textView2);
+            example_item = itemView.findViewById(R.id.cardview);
         }
     }
 

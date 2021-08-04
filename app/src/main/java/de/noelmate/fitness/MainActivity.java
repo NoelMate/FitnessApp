@@ -9,6 +9,8 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Toast;
 
@@ -64,6 +66,26 @@ public class MainActivity extends AppCompatActivity {
                 uebung_name.add(cursor.getString(1));
             }
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu){
+        getMenuInflater().inflate(R.menu.menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        if(id == R.id.settings){
+            openSettings();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    public void openSettings(){
+        Intent intent = new Intent(this, AddItem.class);
+        startActivity(intent);
     }
 
     public void openAddItem(){
