@@ -24,6 +24,11 @@
             android:label=""
             android:parentActivityName=".MainActivity" />
         <activity
+            android:name=".AddTag"
+            android:exported="true"
+            android:label="AddTag"
+            android:parentActivityName=".MainActivity" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

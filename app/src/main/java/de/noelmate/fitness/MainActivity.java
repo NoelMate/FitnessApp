@@ -57,7 +57,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void storeDataInArrays(){
-        Cursor cursor = myDB.readAllData();
+        Cursor cursor = myDB.readMainTable();
+        //Log.v("TEST", "String0: " + cursor.);
         if(cursor.getCount() == 0){
             Toast.makeText(this, "No data!", Toast.LENGTH_SHORT).show();
         }else{
